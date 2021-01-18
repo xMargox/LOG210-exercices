@@ -14,7 +14,7 @@
 **Acteur principal :** Caissier
 ****Préconditions :****
 La caisse est libre et son tiroir-caisse est vide (il n’y a pas de plateau dedans).
-
+PPP
 **Garanties de succès (postconditions)**
 Le caissier est authentifié. Le plateau du caissier est inséré dans le tiroir-caisse et son identificateur est enregistré. Le montant d’argent du plateau est enregistré. L’heure de l’arrivée du caissier est enregistrée.
 
@@ -34,9 +34,45 @@ Le caissier est authentifié. Le plateau du caissier est inséré dans le tiroir
 Pour voir comment un plateau-argent peut être enlevé d’un tiroir-caisse, regarder cette vidéo sur YouTube : https://goo.gl/9HdKNq
 
 ## Interface usagé
+
 ## MDD
+```plantuml
+@startuml Modèle du domaine
+class Caissier <<Role>> {
+    identifiant : String
+    motDePasse : String
+}
+
+class Caisse <<Objet physique>> {
+    ouvert : bool
+}
+
+class Plateau <<Objet physique, conteneur>> {
+    identifiant : String
+}
+
+class DepotPlateau <<Transaction>> {
+    montant : Double
+    heureDebut : Date
+    heureFin : Date
+}
+
+DepotPlateau -- Caissier: fait par
+DepotPlateau
+
+
+@enduml
+```
 ## DSS
+```plantuml
+@startuml Diagramme de séquence
+Caissier -> 
+@enduml
+```
+
 ## Contrats
+
 ## RDCU's
+
 ## DCL
 
